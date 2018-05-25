@@ -1,0 +1,4 @@
+services:
+#    theatre_administrateur.example:
+#        class: Theatre\AdministrateurBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+	<h2>Liste des évènements prévus</h2>
+	<br>
+
+	<table class="table">
+		<thead class="thead-dark">
+	    <tr>
+	      <th scope="col">Date</th>
+
+	      <th scope="col">Spectacle</th>
+	      <th scope="col">Lieux</th>
+	      <th scope="col">Commandes</th>
+	    </tr>
+		</thead>
+		<tbody>
+
+		{% for event in events %}
+			<tr>
+			    <td>{{ event.date|date("d-m-Y") }}</br>{{ event.date|date("H:i") }}</td>
+		    	<td>{{ event.nom }}</td>
+			    <td>{{ event.lieu }} </td>
+			    <td>
+			        <a href="{{path('theatre_administrateur_delete', {'id': event.id})}}" class="btn btn-danger">Supprimer</a>
+					<a href="{{path('theatre_administrateur_edit', {'id': event.id})}}" class="btn btn-warning">Modifier</a>
+				</td>
+	   		</tr>
+
+		{% endfor %}
+
+		</tbody>
+	</table>
+
+	</br>
+
+	<a href="creer" class="btn btn-primary">Créer un évènement</a>
+	<br>
+	<br>
+	<a href="#" class="btn btn-danger">Supprimer un utilisateur</a>
+
+{% endblock %}
+

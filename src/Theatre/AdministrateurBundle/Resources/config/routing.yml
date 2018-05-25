@@ -1,0 +1,32 @@
+theatre_administrateur_homepage:
+    path:     /
+    defaults: { _controller: TheatreAdministrateurBundle:Default:index }
+theatre_administrateur_creer:
+    path:     /creer
+    defaults: { _controller: TheatreAdministrateurBundle:Default:creerevent }
+theatre_administrateur_edit:
+    path:     /edit/{id}
+    defaults: { _controller: TheatreAdministrateurBundle:Default:edit }
+    requirements:
+      id: '\d+'
+theatre_administrateur_delete:
+    path:     /delete/{id}
+    defaults: { _controller: TheatreAdministrateurBundle:Default:delete}
+    requirements:
+      id: '\d+'
+theatre_administrateur_homepageUser:
+    path:     /user/{id}
+    defaults: { _controller: TheatreAdministrateurBundle:Default:indexUser }
+    requirements:
+      id: '\d+'
+theatre_administrateur_homepageAdmin:
+    path:     /admin
+    defaults: { _controller: TheatreAdministrateurBundle:Default:indexAdmin }
+theatre_utilisateur_edit:
+    path:     /editu/{id}
+    defaults: { _controller: TheatreAdministrateurBundle:Default:editUser }
+    requirements:
+      id: '\d+'
+theatre_test:
+    path:     /test
+    defaults: { _controller: TheatreAdministrateurBundle:Default:test }
