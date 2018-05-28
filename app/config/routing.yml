@@ -1,6 +1,6 @@
 theatre_administrateur:
     resource: "@TheatreAdministrateurBundle/Resources/config/routing.yml"
-    prefix:   /theatre
+    prefix:   /
     
 app:
     resource: '@AppBundle/Controller/'
