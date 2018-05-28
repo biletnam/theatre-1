@@ -6,6 +6,10 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+
 class EvenementType extends AbstractType
 {
     /**
@@ -13,9 +17,10 @@ class EvenementType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom')
-        ->add('lieu')
-        ->add('date');
+        $builder->add('nom', TextType::class)
+        ->add('lieu', TextType::class)
+        ->add('date', DateType::class)
+        ->add('submit', SubmitType::class);
     }/**
      * {@inheritdoc}
      */
