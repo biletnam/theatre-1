@@ -13,7 +13,11 @@ class UtilisateurType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('userId')->add('teamDomain')->add('nom')->add('prenom')->add('userName');
+        $builder->add('userId')
+        ->add('teamDomain')
+        ->add('nom')
+        ->add('prenom')
+        ->add('userName');
     }/**
      * {@inheritdoc}
      */
@@ -31,6 +35,4 @@ class UtilisateurType extends AbstractType
     {
         return 'appbundle_utilisateur';
     }
-
-
 }
