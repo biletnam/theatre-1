@@ -167,7 +167,14 @@ class DefaultController extends Controller
         $repository = $this->getDoctrine()->getRepository(Evenement::class);
         $events = $repository->findAll();
 
-        return $this->render('@TheatreAdministrateur/Default/test.html.twig',array('listEvent'=>$events));
+        return $this->render('@TheatreAdministrateur/Default/listEvent.html.twig', array('listEvent' => $events));
+    }
+
+    public function participateAction() {
+
+        // Attribuer l'event à l'utilisateur
+        $entityManager = $this->getDoctrine()->getManager();
+    	$repository = $this->getDoctrine()->getRepository(UtilisateurEvenement::class);
 
     }
 
