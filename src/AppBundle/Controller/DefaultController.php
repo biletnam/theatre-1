@@ -17,7 +17,7 @@ class DefaultController extends Controller
     {
 
         $tokenAuthentique = bin2hex(openssl_random_pseudo_bytes(32));
-        echo "http://localhost/projetTheatre/Theatre/web/app_dev.php/theatre?token=".$tokenAuthentique;
+        echo "http://localhost/theatre/web/app_dev.php/theatre?token=".$tokenAuthentique;
         
         //On charge le repository Doctrine
         $entityManager = $this->getDoctrine()->getManager();
