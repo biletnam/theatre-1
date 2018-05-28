@@ -170,4 +170,6 @@ class DefaultController extends Controller
         $entityManager->flush();
         return $this->render('@TheatreAdministrateur/Default/test.html.twig', array('event'=>$event,'util'=>$util));
     }
+
+
 }
