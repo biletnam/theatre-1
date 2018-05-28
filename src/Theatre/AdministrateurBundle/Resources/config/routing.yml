@@ -27,6 +27,9 @@ theatre_utilisateur_edit:
     defaults: { _controller: TheatreAdministrateurBundle:Default:editUser }
     requirements:
       id: '\d+'
+theatre_event_list:
+    path: /listevent
+    defaults: { _controller: TheatreAdministrateurBundle:Default:listevent }
 theatre_test:
     path:     /test
     defaults: { _controller: TheatreAdministrateurBundle:Default:test }

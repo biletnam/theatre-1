@@ -143,31 +143,14 @@ class DefaultController extends Controller
     //     $users = $repository2->findAll();
     //     return $this->render('@TheatreAdministrateur/Default/indexUser.html.twig',array('events'=>$events,'users'=>$users));
     // }
-    public function testAction()
+    public function listeventAction()
     {
-        $event = new Evenement;
-        $util = new Utilisateur;
-
-        $utilisateurevenement = new UtilisateurEvenement;
-        $utilisateurevenement->setDisponibilite('test')->setSouhait('test')->setUserId(1)->setEventId(1);
-
-        $util->setUserId(1)
-        ->setTeamDomain('team domaine en dur')
-        ->setNom('nom user en dur')
-        ->setPrenom('prenom en dur')
-        ->setUserName('user name en dur');
-        // ->addUtilisateurevenement($utilisateurevenement);
-        $event->setNom('Event en dur')
-        ->setLieu('Lieu en dur')
-        ->setDate($date= new DateTime());
-        // ->addUtilisateurevenement($utilisateurevenement);
-
-        $utilisateurevenement->setUtilisateur($util)->setEvenement($event);
-
-        dump($utilisateurevenement);
+        $events = new Evenement;
         $entityManager = $this->getDoctrine()->getManager();
-        $entityManager->persist($utilisateurevenement);
-        $entityManager->flush();
-        return $this->render('@TheatreAdministrateur/Default/test.html.twig', array('event'=>$event,'util'=>$util));
+        $repository = $this->getDoctrine()->getRepository(Evenement::class);
+        $events = $repository->findAll();
+
+        return $this->render('@TheatreAdministrateur/Default/test.html.twig',array('listEvent'=>$events));
+
     }
 }
