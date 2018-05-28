@@ -3,10 +3,10 @@
 {% block body %}
 
 Qui etes vous ? </br>
-{% for util in utilisateurs%}
-<a href="{{path('theatre_administrateur_homepageUser',{'id': util.id})}}" >{{util.prenom}}</a>
+
+<a href="{{path('theatre_administrateur_homepageUser',{'id': utilisateur.id})}}" >{{utilisateur.prenom}}</a>
 </br>
-{% endfor%}
+
 
 <a href="{{path('theatre_administrateur_homepageAdmin')}}" class="btn btn-warning">Administrateur</a>
 

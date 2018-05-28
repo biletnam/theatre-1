@@ -17,9 +17,25 @@ class DefaultController extends Controller
     public function indexAction()
     {
 
+        ////$utilisateur = $this->get('security.token_storage')->getToken()->getUser()->getUsername();
+             //   dump($utilisateur);
+
+        //unset($test);
     	$repository = $this->getDoctrine()->getRepository(Utilisateur::class);
-    	$utilisateurs = $repository->findAll();
-        return $this->render('@TheatreAdministrateur/Default/index.html.twig',array('utilisateurs'=>$utilisateurs));
+        $token =$this->get('security.token_storage')->getToken();
+        //dump($token);
+        $utilisateur = $repository->findBy(array('token'=> $token->getUser()->getUsername()));
+        dump($utilisateur);
+        $id=$utilisateur[0]->getId();
+        dump($id);
+        $token->setAttributes(array('id' => $id,
+                                    'userid' => $utilisateur[0]->getUserId()));
+        dump($token);
+    	
+        //dump($utilisateur);
+        die();
+       // $id = $repository->findBy(array('userid' =>$utilisateur->get());
+        return $this->render('@TheatreAdministrateur/Default/index.html.twig',array('utilisateur'=>$utilisateur));
     }
      public function creereventAction(Request $request)
     {
@@ -145,6 +161,7 @@ class DefaultController extends Controller
     // }
     public function listeventAction()
     {
+        dump($this->get('security.token_storage')->getToken());
         $events = new Evenement;
         $entityManager = $this->getDoctrine()->getManager();
         $repository = $this->getDoctrine()->getRepository(Evenement::class);
