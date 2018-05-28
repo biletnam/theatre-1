@@ -6,6 +6,10 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+
+
 class UtilisateurType extends AbstractType
 {
     /**
@@ -13,7 +17,12 @@ class UtilisateurType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('userId')->add('teamDomain')->add('nom')->add('prenom')->add('userName');
+        $builder->add('userId')
+        ->add('teamDomain', TextType::class)
+        ->add('nom', TextType::class)
+        ->add('prenom', TextType::class)
+        ->add('userName', TextType::class)
+        ->add('submit', SubmitType::class);
     }/**
      * {@inheritdoc}
      */
@@ -31,6 +40,4 @@ class UtilisateurType extends AbstractType
     {
         return 'appbundle_utilisateur';
     }
-
-
 }

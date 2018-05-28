@@ -3,8 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Utilisateur;
-use Evenement;
+use AppBundle\Entity\Utilisateur;
+use AppBundle\Entity\Evenement ;
 /**
  * UtilisateurEvenement
  *

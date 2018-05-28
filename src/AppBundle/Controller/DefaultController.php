@@ -16,7 +16,7 @@ class DefaultController extends Controller
     {
 
         $tokenAuthentique = bin2hex(openssl_random_pseudo_bytes(32));
-        echo "http://localhost/projetTheatre/Theatre/web/app_dev.php/AdministrateurBundle/theatre?token=".$tokenAuthentique;
+        echo "http://localhost/projetTheatre/Theatre/web/app_dev.php/theatre?token=".$tokenAuthentique;
         
         //On charge le repository Doctrine
         $entityManager = $this->getDoctrine()->getManager();
@@ -39,5 +39,10 @@ class DefaultController extends Controller
             $entityManager->flush();
         }
         return null;
+=======
+        // replace this example code with whatever you need
+       /* return $this->render('default/index.html.twig', [
+            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
+        ]);*/
     }
 }
