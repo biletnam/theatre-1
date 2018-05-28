@@ -29,7 +29,10 @@ theatre_utilisateur_edit:
       id: '\d+'
 theatre_event_list:
     path: /listevent
-    defaults: { _controller: TheatreAdministrateurBundle:Default:listevent }
+    defaults: { _controller: TheatreAdministrateurBundle:Default:listEvent }
+theatre_participate_event:
+    path: /participate-event
+    defaults: { _controller: TheatreAdministrateurBundle:Default:participate-event}
 theatre_test:
     path:     /test
     defaults: { _controller: TheatreAdministrateurBundle:Default:test }
