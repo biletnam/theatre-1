@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Utilisateur;
 
 class DefaultController extends Controller
@@ -38,8 +39,8 @@ class DefaultController extends Controller
             $entityManager->persist($utilisateur);
             $entityManager->flush();
         }
-        return null;
-        
+        return new Response();
+
         // replace this example code with whatever you need
        /* return $this->render('default/index.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
