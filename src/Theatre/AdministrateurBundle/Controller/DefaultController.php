@@ -153,4 +153,6 @@ class DefaultController extends Controller
         return $this->render('@TheatreAdministrateur/Default/test.html.twig',array('listEvent'=>$events));
 
     }
+
+
 }

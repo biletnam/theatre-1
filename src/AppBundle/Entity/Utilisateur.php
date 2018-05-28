@@ -56,6 +56,14 @@ class Utilisateur
      * @ORM\Column(name="user_name", type="string", length=255)
      */
     private $userName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="token", type="string", length=255)
+     */
+    private $token;
+
     /**
     * @ORM\OneToMany(targetEntity="UtilisateurEvenement", mappedBy="utilisateur", cascade={"persist"})
     */
@@ -229,5 +237,29 @@ class Utilisateur
     public function getUtilisateurevenements()
     {
         return $this->utilisateurevenements;
+    }
+
+    /**
+     * Set token
+     *
+     * @param string $token
+     *
+     * @return Utilisateur
+     */
+    public function setToken($token)
+    {
+        $this->token = $token;
+
+        return $this;
+    }
+
+    /**
+     * Get token
+     *
+     * @return string
+     */
+    public function getToken()
+    {
+        return $this->token;
     }
 }
