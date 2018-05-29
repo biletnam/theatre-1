@@ -21,7 +21,7 @@
 		    	<td>{{ evenement.nom }}</td>
 			    <td>{{ evenement.lieu }} </td>	
                 <td>{{utilisateur.userId}}
-                    <a href="{{path('theatre_participate_event', {'id_utilisateur': utilisateur.userId,'id_evenement': evenement.id }) }}" class="btn btn-warning">
+                    <a href="{{path('theatre_participate_event', {'userId': utilisateur.userId,'eventId': evenement.id }) }}" class="btn btn-warning">
                     	Participer
                 	</a>
                 </td>	    
