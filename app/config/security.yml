@@ -21,11 +21,12 @@ security:
             security: false
 
         main:
-            pattern:    ^/theatre
+            pattern:    ^/(theatre|admin)
             stateless: false
             simple_preauth:
                 authenticator: AppBundle\Security\ApiKeyAuthenticator
             provider: api_key_user_provider
+
             #logout_on_user_change: true
             
             # activate different ways to authenticate
