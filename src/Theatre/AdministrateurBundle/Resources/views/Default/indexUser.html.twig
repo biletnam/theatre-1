@@ -1,14 +1,14 @@
 {% extends 'base.html.twig' %}
 {% block body %}
 
-	<h2>Mes évenements {{ ues[0].utilisateur.prenom }} </h2>
+	<h2>Mes évènements - {{ ues[0].utilisateur.prenom }} </h2>
 	<br>
 
 	<table class="table">
 		<thead class="thead-dark">
 	    <tr>
 	      <th scope="col">Date</th>
-
+	      <th scope="col">Heure</th>
 	      <th scope="col">Spectacle</th>
 	      <th scope="col">Lieu</th>
 	      <th scope="col">Disponibilité</th>	      
@@ -19,7 +19,8 @@
 
 		{% for ue in ues %}
 			<tr>
-			    <td>{{ ue.evenement.date|date("d-m-Y") }}</br>{{ ue.evenement.date|date("H:i") }}</td>
+			    <td>{{ ue.evenement.date|date("d/m/Y") }}</td>
+			    <td>{{ ue.evenement.date|date("H:i") }}</td>
 		    	<td>{{ ue.evenement.nom }}</td>
 			    <td>{{ ue.evenement.lieu }} </td>
 			    <td>{{ue.disponibilite}} </td>			    
@@ -33,5 +34,9 @@
 
 		</tbody>
 	</table>
+
+	<hr>
+
+	<a href="{{path('theatre_event_list')}}" class="btn btn-info">Participer à un autre évènement</a>
 
 {% endblock %}

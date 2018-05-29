@@ -192,29 +192,29 @@ class DefaultController extends Controller
 
         $entityManager = $this->getDoctrine()->getManager();
 
-
-
         $repository =  $this->getDoctrine()->getRepository(Utilisateur::class);
         $utilisateur = $repository->findBy(array('id' => $userId));
 
         $repository =  $this->getDoctrine()->getRepository(Evenement::class);
         $evenement = $repository->findBy(array('id' => $eventId));
         $repository =  $this->getDoctrine()->getRepository(UtilisateurEvenement::class);
+
         // Si l'utilisateur n'est pas déjà inscrit à cet event
         $find = $repository->findBy(array('userId' => $userId, 'eventId' => $eventId));
-        dump($find,$utilisateur,$evenement);
+
         if (!$find) {
 
             $ue = new UtilisateurEvenement();
             $ue->setUserId($userId)->setEventId($eventId)->setUtilisateur($utilisateur[0])->setEvenement($evenement[0]);
-            dump($ue);
+    
             $entityManager->persist($ue);
             $entityManager->flush();
         } 
 
-        return $this->render('@TheatreAdministrateur/Default/participateEvent.html.twig');
+        return $this->redirectToRoute('theatre_event_list');
     }
     public function deleteUserAction($id)
+
     {
      //   $util = $ue[0]->getUserId();
       //  dump($util);
