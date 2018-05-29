@@ -218,12 +218,17 @@ class DefaultController extends Controller
 
         return $this->redirectToRoute('theatre_homepageUser', array('id' => $userId));
     }
+    public function deleteUserAction($id)
 
-    public function deleteUserAction($ue)
     {
+     //   $util = $ue[0]->getUserId();
+      //  dump($util);
+      $session = $this->get('security.token_storage')->getToken()->getUser()->getUsername();
+      $repository =  $this->getDoctrine()->getRepository(UtilisateurEvenement::class);
+      $utilisateurevent = $repository->findBy(array('id' => $id));
         $entityManager = $this->getDoctrine()->getManager();
-        $entityManager->remove($product);
+        $entityManager->remove($utilisateurevent[0]);
         $entityManager->flush();
-        return $this->render('@TheatreAdministrateur/Default/editUser.html.twig', array('form' => $form->createView(),));
+        return $this->redirectToRoute('theatre_homepageUser',array('id'=>$session));
     }
 }

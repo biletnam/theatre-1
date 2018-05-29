@@ -30,6 +30,11 @@ theatre_utilisateur_edit:
 theatre_event_list:
     path: /theatre/listevent
     defaults: { _controller: TheatreAdministrateurBundle:Default:listEvent }
+theatre_event_user_delete:
+    path: /theatre/delete/{id}
+    defaults: { _controller: TheatreAdministrateurBundle:Default:deleteUser }
+    requirements:
+      id: '\d+'
 theatre_participate_event:
     path: /theatre/participate-event
     defaults: { _controller: TheatreAdministrateurBundle:Default:participateEvent}
