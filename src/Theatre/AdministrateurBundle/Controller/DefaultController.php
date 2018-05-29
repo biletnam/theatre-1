@@ -18,22 +18,12 @@ class DefaultController extends Controller
     {
 
         $session = $this->get('security.token_storage')->getToken()->getUser()->getUsername();
-        dump($session);
-
         
     	$repository = $this->getDoctrine()->getRepository(Utilisateur::class);
         $utilisateur = $repository->findBy(array('userId'=> $session));
-        dump($utilisateur);
 
-        //$id=$utilisateur[0]->getId();
-        //dump($id);
-        //$token->setAttributes(array('id' => $id,
-                                   // 'userid' => $utilisateur[0]->getUserId()));
-        //dump($token);
-    	
-        //dump($utilisateur);
-        
-       // $id = $repository->findBy(array('userid' =>$utilisateur->get());
+
+
         return $this->render('@TheatreAdministrateur/Default/index.html.twig',array('utilisateur'=>$utilisateur[0]));
     }
      public function creereventAction(Request $request)
