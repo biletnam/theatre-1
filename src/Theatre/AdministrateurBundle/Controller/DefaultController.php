@@ -37,7 +37,7 @@ class DefaultController extends Controller
        // $id = $repository->findBy(array('userid' =>$utilisateur->get());
         return $this->render('@TheatreAdministrateur/Default/index.html.twig',array('utilisateur'=>$utilisateur));
     }
-     public function creereventAction(Request $request)
+     public function createEventAction(Request $request)
     {
     	$entityManager = $this->getDoctrine()->getManager();
     	$event = new Evenement;
@@ -57,7 +57,7 @@ class DefaultController extends Controller
 		return $this->redirectToRoute('theatre_administrateur_homepage');
 		}
 
-        return $this->render('@TheatreAdministrateur/Default/creerevent.html.twig', array('form' => $form->createView() ));
+        return $this->render('@TheatreAdministrateur/Default/createEvent.html.twig', array('form' => $form->createView() ));
     }
     public function editAction($id,Request $request)
     {
@@ -145,7 +145,7 @@ class DefaultController extends Controller
             'success',
             'Succès : evenement créé'
         );
-        return $this->redirectToRoute('theatre_administrateur_homepageUser',array('id'=>$id));
+        return $this->redirectToRoute('theatre_homepageUser',array('id'=>$id));
         }
 
         return $this->render('@TheatreAdministrateur/Default/editUser.html.twig', array('form' => $form->createView(),));

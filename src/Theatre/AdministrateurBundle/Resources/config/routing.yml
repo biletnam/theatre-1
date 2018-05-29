@@ -1,9 +1,9 @@
 theatre_administrateur_homepage:
     path:     /
     defaults: { _controller: TheatreAdministrateurBundle:Default:index }
-theatre_administrateur_creer:
-    path:     /creer
-    defaults: { _controller: TheatreAdministrateurBundle:Default:creerevent }
+theatre_administrateur_create:
+    path:     /create
+    defaults: { _controller: TheatreAdministrateurBundle:Default:createEvent }
 theatre_administrateur_edit:
     path:     /edit/{id}
     defaults: { _controller: TheatreAdministrateurBundle:Default:edit }
@@ -31,8 +31,8 @@ theatre_event_list:
     path: /listevent
     defaults: { _controller: TheatreAdministrateurBundle:Default:listEvent }
 theatre_participate_event:
-    path: /participate-event
-    defaults: { _controller: TheatreAdministrateurBundle:Default:participate-event}
+    path: /participate
+    defaults: { _controller: TheatreAdministrateurBundle:Default:participateEvent}
 theatre_test:
     path:     /test
     defaults: { _controller: TheatreAdministrateurBundle:Default:test }
