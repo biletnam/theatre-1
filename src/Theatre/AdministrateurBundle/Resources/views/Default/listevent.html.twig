@@ -20,7 +20,7 @@
 			    <td>{{ evenement.date|date("d-m-Y") }}</br>{{ evenement.date|date("H:i") }}</td>
 		    	<td>{{ evenement.nom }}</td>
 			    <td>{{ evenement.lieu }} </td>	
-                <td>{{utilisateur.userId}}
+                <td>
                     <a href="{{path('theatre_participate_event', {'userId': utilisateur.userId,'eventId': evenement.id }) }}" class="btn btn-warning">
                     	Participer
                 	</a>

@@ -25,32 +25,32 @@ class UtilisateurEvenement
     /**
      * @var string
      *
-     * @ORM\Column(name="disponibilite", type="string", length=255)
+     * @ORM\Column(name="disponibilite", type="string", length=255, nullable=TRUE)
      */
     private $disponibilite;
     /**
     * @var string
     *
-    * @ORM\Column(name="commentaire", type="string", length=255)
+    * @ORM\Column(name="commentaire", type="string", length=255, nullable=TRUE)
     */
     private $commentaire;
     /**
      * @var string
      *
-     * @ORM\Column(name="souhait", type="string", length=255)
+     * @ORM\Column(name="souhait", type="string", length=255, nullable=TRUE)
      */
     private $souhait;
      /**
      * @var \DateTime
      *
-     * @ORM\Column(name="horaireDispo", type="datetime")
+     * @ORM\Column(name="horaireDispo", type="datetime", nullable=TRUE)
      */
     private $horaireDispo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="vehicule", type="string", length=255)
+     * @ORM\Column(name="vehicule", type="string", length=255, nullable=TRUE)
      */
     private $vehicule;
     
@@ -58,7 +58,7 @@ class UtilisateurEvenement
     /**
      * @var int
      *
-     * @ORM\Column(name="placeHebergement", type="integer", length=5)
+     * @ORM\Column(name="placeHebergement", type="integer", length=5, nullable=TRUE)
      */
     private $placeHebergement;
     /**

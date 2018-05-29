@@ -184,11 +184,30 @@ class DefaultController extends Controller
 
     // Attribuer un evenement à un utilisateur
     public function participateEventAction() {
+
         $userId = $_GET['userId'];
         $eventId = $_GET['eventId'];
+
         $entityManager = $this->getDoctrine()->getManager();
-        $repository = $this->getDoctrine()->getRepository(UtilisateurEvenement::class);
-        
+        $repository =  $this->getDoctrine()->getRepository(UtilisateurEvenement::class);
+
+        $ue = new UtilisateurEvenement();
+
+        // Si l'utilisateur n'est pas déjà inscrit à cet event
+        $find = $repository->findBy(array('userId' => $userId, 'eventId' => $eventId));
+        dump($find);
+        if (!$find) {
+
+            dump($userId);
+            dump($eventId);
+
+            $ue->setUserId($userId);
+            $ue->setEventId($eventId);
+
+            dump($ue);
+            $entityManager->persist($ue);
+            $entityManager->flush();
+        } 
 
         return $this->render('@TheatreAdministrateur/Default/participateEvent.html.twig');
     }
