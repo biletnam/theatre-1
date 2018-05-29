@@ -166,13 +166,20 @@ class DefaultController extends Controller
 
     public function listeventAction()
     {
-        dump($this->get('security.token_storage')->getToken());
+        //dump($this->get('security.token_storage')->getToken());
+        // récupération du token de session Symfony
+        $session = $this->get('security.token_storage')->getToken()->getUser()->getUsername();
+
+        // récupéreation d'un userId nécéssaire pour les pages liées à l'utilisateur.
+        $repository = $this->getDoctrine()->getRepository(Utilisateur::class);
+        $utilisateur = $repository->findBy(array('userId'=> $session));
+        //dump($utilisateur[0]);
         $events = new Evenement;
         $entityManager = $this->getDoctrine()->getManager();
         $repository = $this->getDoctrine()->getRepository(Evenement::class);
         $events = $repository->findAll();
 
-        return $this->render('@TheatreAdministrateur/Default/listEvent.html.twig', array('listEvent' => $events));
+        return $this->render('@TheatreAdministrateur/Default/listEvent.html.twig', array('listEvent' => $events, 'utilisateur'=> $utilisateur[0]));
     }
 
     // Attribuer un evenement à un utilisateur
