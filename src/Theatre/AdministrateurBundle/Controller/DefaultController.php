@@ -15,6 +15,7 @@ use \Datetime;
 class DefaultController extends Controller
 {
 
+
     // Page d'accueil pour chaque utilisateur
 
     public function indexAction()
@@ -31,6 +32,7 @@ class DefaultController extends Controller
     
     // Page de création des évenements
     public function createEventAction(Request $request)
+
     {
     	$entityManager = $this->getDoctrine()->getManager();
     	$event = new Evenement;
@@ -53,9 +55,7 @@ class DefaultController extends Controller
         return $this->render('@TheatreAdministrateur/Default/createEvent.html.twig', array('form' => $form->createView() ));
     }
 
-
     // Page d'édition des évenements
-
     public function editAction($id,Request $request)
     {
     	$repository = $this->getDoctrine()->getRepository(Evenement::class);
@@ -129,7 +129,6 @@ class DefaultController extends Controller
         $repository = $this->getDoctrine()->getRepository(UtilisateurEvenement::class);
         $entityManager = $this->getDoctrine()->getManager();
         $ue = $repository->findBy(array('id'=>$id));
-        // var_dump($event[0]);
         $form = $this->createForm(UtilisateurEvenementType::class, $ue[0]);
 
         if (!$ue) {
