@@ -170,7 +170,7 @@ class DefaultController extends Controller
         // récupération du token de session Symfony
         $session = $this->get('security.token_storage')->getToken()->getUser()->getUsername();
 
-        // récupéreation d'un userId nécéssaire pour les pages liées à l'utilisateur.
+        // récupération d'un userId nécéssaire pour les pages liées à l'utilisateur.
         $repository = $this->getDoctrine()->getRepository(Utilisateur::class);
         $utilisateur = $repository->findBy(array('userId'=> $session));
         //dump($utilisateur[0]);
@@ -183,11 +183,11 @@ class DefaultController extends Controller
     }
 
     // Attribuer un evenement à un utilisateur
-    public function participateAction($userId, $event) {
+    public function participateEventAction() {
 
         $entityManager = $this->getDoctrine()->getManager();
     	$repository = $this->getDoctrine()->getRepository(UtilisateurEvenement::class);
 
-        $ue = $repository->add($id);
+        return $this->render('@TheatreAdministrateur/Default/index.html.twig');
     }
 }
