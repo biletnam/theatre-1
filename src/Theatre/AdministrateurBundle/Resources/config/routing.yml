@@ -14,12 +14,12 @@ theatre_administrateur_delete:
     defaults: { _controller: TheatreAdministrateurBundle:Default:delete}
     requirements:
       id: '\d+'
-theatre_administrateur_homepageUser:
+theatre_homepageUser:
     path:     /user/{id}
     defaults: { _controller: TheatreAdministrateurBundle:Default:indexUser }
     requirements:
       id: '\d+'
-theatre_administrateur_homepageAdmin:
+theatre_homepageAdmin:
     path:     /admin
     defaults: { _controller: TheatreAdministrateurBundle:Default:indexAdmin }
 theatre_utilisateur_edit:
