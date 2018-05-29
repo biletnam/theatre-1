@@ -1,16 +1,16 @@
 theatre_administrateur_homepage:
-    path:     /
+    path:     /admin
     defaults: { _controller: TheatreAdministrateurBundle:Default:index }
 theatre_administrateur_create:
-    path:     /create
+    path:     /admin/create
     defaults: { _controller: TheatreAdministrateurBundle:Default:createEvent }
 theatre_administrateur_edit:
-    path:     /edit/{id}
+    path:     /admin/edit/{id}
     defaults: { _controller: TheatreAdministrateurBundle:Default:edit }
     requirements:
       id: '\d+'
 theatre_administrateur_delete:
-    path:     /delete/{id}
+    path:     /admin/delete/{id}
     defaults: { _controller: TheatreAdministrateurBundle:Default:delete}
     requirements:
       id: '\d+'
