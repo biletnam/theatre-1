@@ -23,6 +23,8 @@ class DefaultController extends Controller
         $entityManager = $this->getDoctrine()->getManager();
         $repository = $this->getDoctrine()->getRepository(Utilisateur::class);
         $authentification = $repository->findByUsername("faro");
+
+        
         
         if($authentification){
             $authentification[0]->setToken($tokenAuthentique);

@@ -55,7 +55,7 @@ class Utilisateur
      *
      * @ORM\Column(name="user_name", type="string", length=255)
      */
-    private $userName;
+    private $username;
 
     /**
      * @var string
@@ -63,6 +63,13 @@ class Utilisateur
      * @ORM\Column(name="token", type="string", length=255)
      */
     private $token;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="admin", type="boolean", options={"default" : false})
+     */
+    private $admin;
 
     /**
     * @ORM\OneToMany(targetEntity="UtilisateurEvenement", mappedBy="utilisateur", cascade={"persist"})
@@ -261,5 +268,29 @@ class Utilisateur
     public function getToken()
     {
         return $this->token;
+    }
+
+    /**
+     * Set admin
+     *
+     * @param boolean $admin
+     *
+     * @return Utilisateur
+     */
+    public function setAdmin($admin)
+    {
+        $this->admin = $admin;
+
+        return $this;
+    }
+
+    /**
+     * Get admin
+     *
+     * @return boolean
+     */
+    public function getAdmin()
+    {
+        return $this->admin;
     }
 }
