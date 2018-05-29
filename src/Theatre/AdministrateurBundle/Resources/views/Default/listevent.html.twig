@@ -1,19 +1,8 @@
 {% extends 'base.html.twig' %}
 {% block body %}
 
-
-	{% for message in app.flashes %}
-	    <div class="flash-notice">
-	        {{ message }}
-	    </div>
-	{% endfor %}
-
 	<h2>Liste des évènements actifs</h2>
-	{% for message in app.flashes('success') %}
-	    <div class="alert alert-notice">
-	        {{ message }}
-	    </div>
-	{% endfor %}
+	
 	<br>
 
 	<table class="table">
