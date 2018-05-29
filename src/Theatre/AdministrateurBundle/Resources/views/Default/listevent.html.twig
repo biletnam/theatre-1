@@ -1,12 +1,14 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-<h2>Liste des Evenements </h2>
+	<h2>Liste des évènements actifs</h2>
+
 	<br>
 
 	<table class="table">
 		<thead class="thead-dark">
 	    <tr>
 	      <th scope="col">Date</th>
+	      <th scope="col">Heure</th>
 
 	      <th scope="col">Spectacle</th>
 	      <th scope="col">Lieu</th>	      
@@ -17,7 +19,8 @@
 
 		{% for evenement in listEvent %}
 			<tr>
-			    <td>{{ evenement.date|date("d-m-Y") }}</br>{{ evenement.date|date("H:i") }}</td>
+			    <td>{{ evenement.date|date("d/m/Y") }}</td>
+			    <td>{{ evenement.date|date("H:i") }}</td>
 		    	<td>{{ evenement.nom }}</td>
 			    <td>{{ evenement.lieu }} </td>	
                 <td>
@@ -31,4 +34,6 @@
 
 		</tbody>
 	</table>
+
+	<a href="{{path('theatre_homepageUser', {'id': utilisateur.userId})}}" class="btn btn-danger">Retour</a>
 {% endblock %}
