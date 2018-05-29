@@ -15,9 +15,8 @@ use \Datetime;
 class DefaultController extends Controller
 {
 
-    /*
-     * Page d'acceuil pour chaque utilisateur
-     */
+    // Page d'accueil pour chaque utilisateur
+
     public function indexAction()
     {
         // récupération du token de session Symfony
@@ -29,12 +28,9 @@ class DefaultController extends Controller
 
         return $this->render('@TheatreAdministrateur/Default/index.html.twig',array('utilisateur'=>$utilisateur[0]));
     }
-
-
-    /*
-     * Page de création des évenements
-     */
-     public function createEventAction(Request $request)
+    
+    // Page de création des évenements
+    public function createEventAction(Request $request)
     {
     	$entityManager = $this->getDoctrine()->getManager();
     	$event = new Evenement;
@@ -58,10 +54,7 @@ class DefaultController extends Controller
     }
 
 
-
-    /**
-     * Page d'édition des évenements
-     **/
+    // Page d'édition des évenements
 
     public function editAction($id,Request $request)
     {
@@ -93,11 +86,8 @@ class DefaultController extends Controller
         return $this->render('@TheatreAdministrateur/Default/edit.html.twig', array('form' => $form->createView(),));
     }
 
-
-     /**
-     * Page de suppression des évenements
-     **/
-     public function deleteAction($id)
+    // Page de suppression des évenements
+    public function deleteAction($id)
     {
     	$entityManager = $this->getDoctrine()->getManager();
     	$repository = $this->getDoctrine()->getRepository(UtilisateurEvenement::class);
@@ -114,12 +104,14 @@ class DefaultController extends Controller
         );
         return $this->render('@TheatreAdministrateur/Default/delete.html.twig');
     }
+
     public function indexAdminAction()
     {
         $repository = $this->getDoctrine()->getRepository(Evenement::class);
         $events = $repository->findAll();
         return $this->render('@TheatreAdministrateur/Default/indexAdmin.html.twig',array('events'=>$events));
     }
+
     public function indexUserAction($id)
     {
         $entityManager = $this->getDoctrine()->getManager();
@@ -131,17 +123,20 @@ class DefaultController extends Controller
         }
         else {return $this->redirectToRoute('theatre_administrateur_homepage');}
     }
-        public function editUserAction($id,Request $request)
+    
+    public function editUserAction($id,Request $request)
     {
         $repository = $this->getDoctrine()->getRepository(UtilisateurEvenement::class);
         $entityManager = $this->getDoctrine()->getManager();
         $ue = $repository->findBy(array('id'=>$id));
         // var_dump($event[0]);
         $form = $this->createForm(UtilisateurEvenementType::class, $ue[0]);
+
         if (!$ue) {
             throw $this->createNotFoundException('No ue found for id '.$id
             );
         }
+
         $form = $this->createForm(UtilisateurEvenementType::class, $ue[0]);
 
         $form->handleRequest($request);
@@ -154,20 +149,24 @@ class DefaultController extends Controller
             'success',
             'Succès : evenement créé'
         );
-        return $this->redirectToRoute('theatre_homepageUser',array('id'=>$id));
+            return $this->redirectToRoute('theatre_homepageUser',array('id'=>$id));
         }
 
         return $this->render('@TheatreAdministrateur/Default/editUser.html.twig', array('form' => $form->createView(),));
     }
-    // public function indexUserAction()
-    // {
-    //     $repository = $this->getDoctrine()->getRepository(Evenement::class);
-    //     $repository2 = $this->getDoctrine()->getRepository(Utilisateur::class);
 
-    //     $events = $repository->findAll();
-    //     $users = $repository2->findAll();
-    //     return $this->render('@TheatreAdministrateur/Default/indexUser.html.twig',array('events'=>$events,'users'=>$users));
-    // }
+    /* 
+    public function indexUserAction()
+    {
+        $repository = $this->getDoctrine()->getRepository(Evenement::class);
+        $repository2 = $this->getDoctrine()->getRepository(Utilisateur::class);
+
+        $events = $repository->findAll();
+        $users = $repository2->findAll();
+        return $this->render('@TheatreAdministrateur/Default/indexUser.html.twig',array('events'=>$events,'users'=>$users));
+    } 
+    */
+
     public function listeventAction()
     {
         dump($this->get('security.token_storage')->getToken());
@@ -179,13 +178,12 @@ class DefaultController extends Controller
         return $this->render('@TheatreAdministrateur/Default/listEvent.html.twig', array('listEvent' => $events));
     }
 
-    public function participateAction() {
+    // Attribuer un evenement à un utilisateur
+    public function participateAction($userId, $event) {
 
-        // Attribuer l'event à l'utilisateur
         $entityManager = $this->getDoctrine()->getManager();
     	$repository = $this->getDoctrine()->getRepository(UtilisateurEvenement::class);
 
+        $ue = $repository->add($id);
     }
-
-
 }
