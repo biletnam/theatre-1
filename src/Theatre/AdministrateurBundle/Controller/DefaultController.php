@@ -14,10 +14,8 @@ use \Datetime;
 
 class DefaultController extends Controller
 {
-
-
+    
     // Page d'accueil pour chaque utilisateur
-
     public function indexAction()
     {
         // récupération du token de session Symfony
