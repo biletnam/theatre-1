@@ -14,18 +14,26 @@ use \Datetime;
 
 class DefaultController extends Controller
 {
+
+    /*
+     * Page d'acceuil pour chaque utilisateur
+     */
     public function indexAction()
     {
-
+        // récupération du token de session Symfony
         $session = $this->get('security.token_storage')->getToken()->getUser()->getUsername();
         
+        // récupéreation d'un userId nécéssaire pour les pages liées à l'utilisateur.
     	$repository = $this->getDoctrine()->getRepository(Utilisateur::class);
         $utilisateur = $repository->findBy(array('userId'=> $session));
 
-
-
         return $this->render('@TheatreAdministrateur/Default/index.html.twig',array('utilisateur'=>$utilisateur[0]));
     }
+
+
+    /*
+     * Page de création des évenements
+     */
      public function createEventAction(Request $request)
     {
     	$entityManager = $this->getDoctrine()->getManager();
@@ -48,6 +56,13 @@ class DefaultController extends Controller
 
         return $this->render('@TheatreAdministrateur/Default/createEvent.html.twig', array('form' => $form->createView() ));
     }
+
+
+
+    /**
+     * Page d'édition des évenements
+     **/
+
     public function editAction($id,Request $request)
     {
     	$repository = $this->getDoctrine()->getRepository(Evenement::class);
@@ -77,6 +92,11 @@ class DefaultController extends Controller
 
         return $this->render('@TheatreAdministrateur/Default/edit.html.twig', array('form' => $form->createView(),));
     }
+
+
+     /**
+     * Page de suppression des évenements
+     **/
      public function deleteAction($id)
     {
     	$entityManager = $this->getDoctrine()->getManager();
