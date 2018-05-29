@@ -1,5 +1,5 @@
 theatre_administrateur_homepage:
-    path:     /admin
+    path:     /theatre
     defaults: { _controller: TheatreAdministrateurBundle:Default:index }
 theatre_administrateur_create:
     path:     /admin/create
@@ -15,7 +15,7 @@ theatre_administrateur_delete:
     requirements:
       id: '\d+'
 theatre_homepageUser:
-    path:     /user/{id}
+    path:     /theatre/user/{id}
     defaults: { _controller: TheatreAdministrateurBundle:Default:indexUser }
     requirements:
       id: '\d+'
@@ -23,15 +23,15 @@ theatre_homepageAdmin:
     path:     /admin
     defaults: { _controller: TheatreAdministrateurBundle:Default:indexAdmin }
 theatre_utilisateur_edit:
-    path:     /editu/{id}
+    path:     /theatre/editu/{id}
     defaults: { _controller: TheatreAdministrateurBundle:Default:editUser }
     requirements:
       id: '\d+'
 theatre_event_list:
-    path: /listevent
+    path: /theatre/listevent
     defaults: { _controller: TheatreAdministrateurBundle:Default:listEvent }
 theatre_participate_event:
-    path: /participate
+    path: /theatre/participate
     defaults: { _controller: TheatreAdministrateurBundle:Default:participateEvent}
 theatre_test:
     path:     /test
