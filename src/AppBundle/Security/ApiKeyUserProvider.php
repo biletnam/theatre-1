@@ -7,22 +7,30 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Core\User\User;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
-use AppBundle\Entity\Token;
-//use Doctrine\ORM\EntityManager;
+use AppBundle\Entity\Utilisateur;
+use Doctrine\ORM\EntityManagerInterface;
 
 class ApiKeyUserProvider implements UserProviderInterface
 {
+    protected $em;
+    public function __construct(EntityManagerInterface $em)
+    {
+        $this->em = $em;
+    }
+
     public function getUsernameForApiKey($apiKey)
     {
         // Look up the username based on the token in the database, via
         // an API call, or do something entirely different
         
-        $token=$apiKey;
+        
+        
+        $repository = $this->em->getRepository(Utilisateur::class);
+        $username = $repository->findByToken($apiKey);
+        //dump($username);
 
-        // $entityManager = $this->getDoctrine()->getManager();
-        // $repository = $this->getDoctrine()->getRepository(Token::class);
-        // $authentification = $repository->findByToken($token);
-        return $token;
+        
+        return $username[0]->getUserId();
     }
 
     public function loadUserByUsername($username)
@@ -38,7 +46,11 @@ class ApiKeyUserProvider implements UserProviderInterface
 
     public function refreshUser(UserInterface $user)
     {
-        // dump($user);
+        
+        
+        
+
+        
         // this is used for storing authentication in the session
         // but in this example, the token is sent in each request,
         // so authentication can be stateless. Throwing this exception

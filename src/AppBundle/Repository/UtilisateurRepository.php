@@ -13,8 +13,18 @@ class UtilisateurRepository extends \Doctrine\ORM\EntityRepository
 	public function findByUsername($username) 
 	{
 		$query = $this->createQueryBuilder('u')
-		    ->WHERE('u.userName = :username')
+		    ->WHERE('u.username = :username')
 		     ->setParameter('username', $username)
+		    ->getQuery();
+
+		return $query->getResult();
+	}
+
+	public function findByToken($token) 
+	{
+		$query = $this->createQueryBuilder('u')
+		    ->WHERE('u.token = :token')
+		     ->setParameter('token', $token)
 		    ->getQuery();
 
 		return $query->getResult();
