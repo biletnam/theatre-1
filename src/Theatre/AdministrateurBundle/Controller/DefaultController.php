@@ -136,8 +136,8 @@ class DefaultController extends Controller
         $repository = $this->getDoctrine()->getRepository(UtilisateurEvenement::class);
         $entityManager = $this->getDoctrine()->getManager();
         $ue = $repository->findBy(array('id'=>$id));
-        // var_dump($event[0]);
         $form = $this->createForm(UtilisateurEvenementType::class, $ue[0]);
+
         if (!$ue) {
             throw $this->createNotFoundException('No ue found for id '.$id
             );
