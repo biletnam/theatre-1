@@ -128,7 +128,7 @@ class DefaultController extends Controller
         $entityManager = $this->getDoctrine()->getManager();
         $ue = $repository->findBy(array('id'=>$id));
         $form = $this->createForm(UtilisateurEvenementType::class, $ue[0]);
-
+        $util = $ue[0]->getUserId();
         if (!$ue) {
             throw $this->createNotFoundException('No ue found for id '.$id
             );
@@ -146,7 +146,7 @@ class DefaultController extends Controller
             'success',
             'Succès : evenement créé'
         );
-            return $this->redirectToRoute('theatre_homepageUser',array('id'=>$id));
+            return $this->redirectToRoute('theatre_homepageUser',array('id'=>$util));
         }
 
         return $this->render('@TheatreAdministrateur/Default/editUser.html.twig', array('form' => $form->createView(),));
@@ -189,21 +189,36 @@ class DefaultController extends Controller
         $userId = (int)$userId;
         $eventId = $_GET['eventId'];
         $eventId = (int)$eventId;
-        dump($userId);
+
         $entityManager = $this->getDoctrine()->getManager();
+
+
+
+        $repository =  $this->getDoctrine()->getRepository(Utilisateur::class);
+        $utilisateur = $repository->findBy(array('id' => $userId));
+
+        $repository =  $this->getDoctrine()->getRepository(Evenement::class);
+        $evenement = $repository->findBy(array('id' => $eventId));
         $repository =  $this->getDoctrine()->getRepository(UtilisateurEvenement::class);
         // Si l'utilisateur n'est pas déjà inscrit à cet event
         $find = $repository->findBy(array('userId' => $userId, 'eventId' => $eventId));
-        dump($find);
+        dump($find,$utilisateur,$evenement);
         if (!$find) {
-            $find = new UtilisateurEvenement();
-            $find->setUserId($userId)->setEventId($eventId);
-            dump($find);
-            $entityManager->persist($find);
+
+            $ue = new UtilisateurEvenement();
+            $ue->setUserId($userId)->setEventId($eventId)->setUtilisateur($utilisateur[0])->setEvenement($evenement[0]);
+            dump($ue);
+            $entityManager->persist($ue);
             $entityManager->flush();
-            dump($entityManager);
         } 
 
         return $this->render('@TheatreAdministrateur/Default/participateEvent.html.twig');
+    }
+    public function deleteUserAction($ue)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($product);
+        $entityManager->flush();
+        return $this->render('@TheatreAdministrateur/Default/editUser.html.twig', array('form' => $form->createView(),));
     }
 }
