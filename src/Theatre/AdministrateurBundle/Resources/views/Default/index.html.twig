@@ -4,11 +4,11 @@
 
 Qui etes vous ? </br>
 
-<a href="{{path('theatre_administrateur_homepageUser',{'id': utilisateur.id})}}" >{{utilisateur.prenom}}</a>
+<a href="{{path('theatre_homepageUser',{'id': utilisateur.id})}}" >{{utilisateur.prenom}}</a>
 </br>
 
 
-<a href="{{path('theatre_administrateur_homepageAdmin')}}" class="btn btn-warning">Administrateur</a>
+<a href="{{path('theatre_homepageAdmin')}}" class="btn btn-warning">Administrateur</a>
 
 
 {% endblock %}
