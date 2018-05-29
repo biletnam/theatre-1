@@ -223,9 +223,19 @@ class DefaultController extends Controller
     
             $entityManager->persist($ue);
             $entityManager->flush();
-        } 
 
-        return $this->redirectToRoute('theatre_event_list');
+            $this->addFlash(
+                'info',
+                "Vous vous êtes inscrit à un évènement"
+            );
+        } else {
+            $this->addFlash(
+                'info',
+                "Vous participez déjà à cet évènement"
+            );
+        }
+
+        return $this->redirectToRoute('theatre_homepageUser', array('id' => $userId));
     }
     public function deleteUserAction($id)
 

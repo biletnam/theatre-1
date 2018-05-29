@@ -1,19 +1,26 @@
 {% extends 'base.html.twig' %}
 {% block body %}
+	
+	<hr>
+	{% for message in app.flashes('info') %}
+	    <div class="alert alert-primary">
+	        {{ message }}
+	    </div>
+	{% endfor %}
 
 	<h2>Mes évènements - {{ ues[0].utilisateur.prenom }} </h2>
 	<br>
 
 	<table class="table">
 		<thead class="thead-dark">
-	    <tr>
-	      <th scope="col">Date</th>
-	      <th scope="col">Heure</th>
-	      <th scope="col">Spectacle</th>
-	      <th scope="col">Lieu</th>
-	      <th scope="col">Disponibilité</th>	      
-	      <th scope="col">Commandes</th>
-	    </tr>
+		    <tr>
+		      <th scope="col">Date</th>
+		      <th scope="col">Heure</th>
+		      <th scope="col">Spectacle</th>
+		      <th scope="col">Lieu</th>
+		      <th scope="col">Disponibilité</th>	      
+		      <th scope="col">Commandes</th>
+		    </tr>
 		</thead>
 		<tbody>
 
