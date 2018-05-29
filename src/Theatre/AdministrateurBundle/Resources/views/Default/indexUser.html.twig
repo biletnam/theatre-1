@@ -1,6 +1,10 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-
+	{% for message in app.flashes('success') %}
+	    <div class="alert alert-notice">
+	        {{ message }}
+	    </div>
+	{% endfor %}
 	<h2>Mes évènements - {{ ues[0].utilisateur.prenom }} </h2>
 	<br>
 
