@@ -205,8 +205,9 @@ class DefaultController extends Controller
             $ue->setEventId($eventId);
 
             dump($ue);
+            dump($entityManager);
             $entityManager->persist($ue);
-            $entityManager->flush();
+           // $entityManager->flush();
         } 
 
         return $this->render('@TheatreAdministrateur/Default/participateEvent.html.twig');
