@@ -2,14 +2,15 @@
 {% block title %} Qui etes vous {% endblock %}
 {% block body %}
 
-Qui etes vous ? </br>
+	Qui etes vous ? 
+	<br>
 
-<a href="{{path('theatre_homepageUser',{'id': utilisateur.id})}}" >{{utilisateur.prenom}}</a>
-</br>
+	<a href="{{path('theatre_homepageUser', {'id': utilisateur.id})}}" >{{utilisateur.prenom}}</a>
+	<br>
 
-{% if is_granted('ROLE_ADMIN') %}
-<a href="{{path('theatre_homepageAdmin')}}" class="btn btn-warning">Administrateur</a>
-{% endif %}
+	{% if is_granted('ROLE_ADMIN') %}
+		<a href="{{path('theatre_homepageAdmin')}}" class="btn btn-warning">Administrateur</a>
+	{% endif %}
 
 {% endblock %}
 

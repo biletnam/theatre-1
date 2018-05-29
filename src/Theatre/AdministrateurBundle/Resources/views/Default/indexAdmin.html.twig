@@ -6,37 +6,35 @@
 
 	<table class="table">
 		<thead class="thead-dark">
-	    <tr>
-	      <th scope="col">Date</th>
-
-	      <th scope="col">Spectacle</th>
-	      <th scope="col">Lieux</th>
-	      <th scope="col">Commandes</th>
-	    </tr>
+		    <tr>
+				<th scope="col">Date</th>
+				<th scope="col">Heure</th>
+				<th scope="col">Spectacle</th>
+				<th scope="col">Lieux</th>
+				<th scope="col">Commandes</th>
+		    </tr>
 		</thead>
 		<tbody>
+			{% for event in events %}
+				<tr>
+				    <td>{{ event.date|date("d-m-Y") }}</td>
+				    <td>{{ event.date|date("H:i") }}</td>
+			    	<td>{{ event.nom }}</td>
+				    <td>{{ event.lieu }} </td>
+				    <td>
+				        <a href="{{path('theatre_administrateur_delete', {'id': event.id})}}" class="btn btn-danger">Supprimer</a>
+						<a href="{{path('theatre_administrateur_edit', {'id': event.id})}}" class="btn btn-warning">Modifier</a>
+					</td>
+		   		</tr>
 
-		{% for event in events %}
-			<tr>
-			    <td>{{ event.date|date("d-m-Y") }}</br>{{ event.date|date("H:i") }}</td>
-		    	<td>{{ event.nom }}</td>
-			    <td>{{ event.lieu }} </td>
-			    <td>
-			        <a href="{{path('theatre_administrateur_delete', {'id': event.id})}}" class="btn btn-danger">Supprimer</a>
-					<a href="{{path('theatre_administrateur_edit', {'id': event.id})}}" class="btn btn-warning">Modifier</a>
-				</td>
-	   		</tr>
-
-		{% endfor %}
-
+			{% endfor %}
 		</tbody>
 	</table>
 
-	</br>
+	<br>
 
 	<a href="creer" class="btn btn-primary">Créer un évènement</a>
-	<br>
-	<br>
+	<br> <br>
 	<a href="#" class="btn btn-danger">Supprimer un utilisateur</a>
 
 {% endblock %}

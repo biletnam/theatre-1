@@ -1,21 +1,29 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-</br>
 
-{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
-{{form_row(form.disponibilite)}}
-{{form_row(form.commentaire)}}
+	<br>
+
+	{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+	{{form_row(form.disponibilite)}}
+
+	{{form_row(form.commentaire)}}
 	<p>Indiquer en commentaire les contraintes particulières</p>
-{{form_row(form.souhait)}}
+
+	{{form_row(form.souhait)}}
 	<p>Les souhaits de participation: joueur / MC / coach / arbitre / assistant / lumière / musique / maître du temps / régisseur / bénévole etc.</p>
-{{form_row(form.horaireDispo)}}
+
+	{{form_row(form.horaireDispo)}}
 	<p>Horaires de disponibilité continue jusqu'au début du spectacle</p>
-{{form_row(form.vehicule)}}
+
+	{{form_row(form.vehicule)}}
 	<p>Aider avec son véhicule au transport du matériel</p>
-{{form_row(form.placeHebergement)}}
+
+	{{form_row(form.placeHebergement)}}
 	<p>Nombre de places pour l'hébergement</p>
 
-{{ form_widget(form) }}
-{{ form_end(form) }}
- </br>
+	{{ form_widget(form) }}
+	{{ form_end(form) }}
+
+	<br>
+	
 {% endblock %}
