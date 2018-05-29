@@ -10,6 +10,9 @@ namespace AppBundle\Repository;
  */
 class UtilisateurRepository extends \Doctrine\ORM\EntityRepository
 {
+	/**
+	 * Fonction permettant de chercher le username
+	 */
 	public function findByUsername($username) 
 	{
 		$query = $this->createQueryBuilder('u')
@@ -19,6 +22,23 @@ class UtilisateurRepository extends \Doctrine\ORM\EntityRepository
 
 		return $query->getResult();
 	}
+
+	/**
+	 * Fonction permettant de chercher le username
+	 */
+	public function findByUserId($userid) 
+	{
+		$query = $this->createQueryBuilder('u')
+		    ->WHERE('u.userId = :userid')
+		     ->setParameter('userid', $userid)
+		    ->getQuery();
+
+		return $query->getResult();
+	}
+
+	/**
+	 * Fonction permettant de chercher le token d'un utilisateur
+	 */
 
 	public function findByToken($token) 
 	{

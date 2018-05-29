@@ -10,6 +10,10 @@ use AppBundle\Entity\Utilisateur;
 
 class DefaultController extends Controller
 {
+
+    const TOKENSLACK = "numerotokenslack";
+    const TEAMSLACK = "num team";
+
     /**
      * @Route("/", name="homepage")
      */

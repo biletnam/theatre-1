@@ -40,7 +40,8 @@ security:
                 
     access_control:
         # require ROLE_ADMIN for /admin*
-        - { path: ^/theatre, roles: ROLE_ADMIN }
+        - { path: ^/theatre, roles: ROLE_USER }
+        - { path: ^/theatre/admin, roles: ROLE_ADMIN }
     # access_control:
      # - { path: ^/authentification/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
      #   - { path: ^/, roles: ROLE_USER }

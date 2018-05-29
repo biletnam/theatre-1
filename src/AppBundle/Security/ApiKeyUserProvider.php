@@ -20,27 +20,29 @@ class ApiKeyUserProvider implements UserProviderInterface
 
     public function getUsernameForApiKey($apiKey)
     {
-        // Look up the username based on the token in the database, via
-        // an API call, or do something entirely different
-        
-        
-        
+        // Récupération du UserId afin de le passer à la session       
         $repository = $this->em->getRepository(Utilisateur::class);
         $username = $repository->findByToken($apiKey);
-        //dump($username);
-
-        
+                
         return $username[0]->getUserId();
     }
 
     public function loadUserByUsername($username)
     {
+        $repository = $this->em->getRepository(Utilisateur::class);
+        $id = $repository->findByUserId($username);
+        if($id[0]->getAdmin() == false){
+            $role = array ('ROLE_USER');
+        }else{
+            $role = array ('ROLE_ADMIN');
+        }
+
         return new User(
             $username,
             null,
             // the roles for the user - you may choose to determine
             // these dynamically somehow based on the user
-            array('ROLE_ADMIN')
+            $role
         );
     }
 

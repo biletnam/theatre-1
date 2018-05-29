@@ -15,9 +15,10 @@ use \Datetime;
 class DefaultController extends Controller
 {
 
-    /*
+    /**
      * Page d'acceuil pour chaque utilisateur
      */
+
     public function indexAction()
     {
         // récupération du token de session Symfony
@@ -31,9 +32,10 @@ class DefaultController extends Controller
     }
 
 
-    /*
+    /**
      * Page de création des évenements
      */
+
      public function createEventAction(Request $request)
     {
     	$entityManager = $this->getDoctrine()->getManager();
@@ -61,7 +63,7 @@ class DefaultController extends Controller
 
     /**
      * Page d'édition des évenements
-     **/
+     */
 
     public function editAction($id,Request $request)
     {
@@ -96,7 +98,7 @@ class DefaultController extends Controller
 
      /**
      * Page de suppression des évenements
-     **/
+     */
      public function deleteAction($id)
     {
     	$entityManager = $this->getDoctrine()->getManager();
@@ -114,6 +116,12 @@ class DefaultController extends Controller
         );
         return $this->render('@TheatreAdministrateur/Default/delete.html.twig');
     }
+
+
+    /**
+     * Page d'acueil de l'administrateur
+     */
+
     public function indexAdminAction()
     {
         $repository = $this->getDoctrine()->getRepository(Evenement::class);
