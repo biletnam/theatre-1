@@ -42,7 +42,7 @@ class Evenement
      */
     private $date;
     /**
-    * @ORM\OneToMany(targetEntity="UtilisateurEvenement", mappedBy="evenement", cascade={"persist"})
+    * @ORM\OneToMany(targetEntity="UtilisateurEvenement", mappedBy="evenement", cascade={"persist"}, orphanRemoval=true )
     */
     private $utilisateurevenements;
 

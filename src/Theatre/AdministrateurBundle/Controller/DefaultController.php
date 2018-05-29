@@ -47,7 +47,7 @@ class DefaultController extends Controller
 			'success',
 			'Succès : evenement créé'
 		);
-		return $this->redirectToRoute('theatre_administrateur_homepage');
+		return $this->redirectToRoute('theatre_homepageAdmin');
 		}
 
         return $this->render('@TheatreAdministrateur/Default/createEvent.html.twig', array('form' => $form->createView() ));
@@ -78,7 +78,7 @@ class DefaultController extends Controller
 			'success',
 			'Succès : evenement créé'
 		);
-		return $this->redirectToRoute('theatre_administrateur_homepage');
+		return $this->redirectToRoute('theatre_homepageAdmin');
 		}
 
         return $this->render('@TheatreAdministrateur/Default/edit.html.twig', array('form' => $form->createView(),));
@@ -87,20 +87,34 @@ class DefaultController extends Controller
     // Page de suppression des évenements
     public function deleteAction($id)
     {
-    	$entityManager = $this->getDoctrine()->getManager();
-    	$repository = $this->getDoctrine()->getRepository(UtilisateurEvenement::class);
-    	$ue = $repository->find($id);
-    	if (!$ue) {
+        $entityManager = $this->getDoctrine()->getManager();
+        
+    	$repository_Event = $this->getDoctrine()->getRepository(Evenement::class);
+        $event = $repository_Event->findBy(array('id'=>$id));
+
+      //  $repository = $this->getDoctrine()->getRepository(UtilisateurEvenement::class);
+        //$ue = $repository->findBy(array('eventId'=>$id));
+
+        //dump($ue[]);die();
+    	if (!$event) {
         	throw $this->createNotFoundException('No event found for id '.$ue
         	);
-	    }
-    	$entityManager->remove($ue);
-		$entityManager->flush();
-		$this->addFlash(
-	        'success',
-	        'Succès : Evnènement supprimé'
-        );
-        return $this->render('@TheatreAdministrateur/Default/delete.html.twig');
+	    }else{
+            $event = $repository_Event->findBy(array('id' => $id));
+          //
+     // dump($event);die();
+          //  $entityManager->remove($ue[0]);
+            //$entityManager->flush();
+           // dump($event[0]->getId());die();
+           $entityManager->remove($event[0]);
+           // $repository_Event->remove( $event[0]);
+            $entityManager->flush();
+            $this->addFlash(
+                'success',
+                'Succès : Evnènement supprimé'
+            );
+            return $this->redirectToRoute('theatre_homepageAdmin');
+        }
     }
 
     public function indexAdminAction()
