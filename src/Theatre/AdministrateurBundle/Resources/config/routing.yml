@@ -14,6 +14,9 @@ theatre_administrateur_delete:
     defaults: { _controller: TheatreAdministrateurBundle:Default:delete}
     requirements:
       id: '\d+'
+theatre_administrateur_deleteUser:
+    path:     /admin/deleteall/
+    defaults: { _controller: TheatreAdministrateurBundle:Default:deleteAll}
 theatre_homepageUser:
     path:     /theatre/user/{id}
     defaults: { _controller: TheatreAdministrateurBundle:Default:indexUser }

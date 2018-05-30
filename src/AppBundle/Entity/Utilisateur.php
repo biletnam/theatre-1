@@ -72,7 +72,7 @@ class Utilisateur
     private $admin;
 
     /**
-    * @ORM\OneToMany(targetEntity="UtilisateurEvenement", mappedBy="utilisateur", cascade={"persist"})
+    * @ORM\OneToMany(targetEntity="UtilisateurEvenement", mappedBy="utilisateur", cascade={"persist"}, orphanRemoval=true)
     */
     private $utilisateurevenements;
     /**

@@ -250,4 +250,19 @@ class DefaultController extends Controller
         $entityManager->flush();
         return $this->redirectToRoute('theatre_homepageUser',array('id'=>$session));
     }
+   public function deleteAllAction(){
+       $repository = $this->getDoctrine()->getRepository(Utilisateur::class);
+       $users = $repository->findBy(array('admin' => false ));
+      // dump($utilisateur);die();
+       $entityManager = $this->getDoctrine()->getManager();
+       foreach ($users as $user) {
+        $entityManager->remove($user);
+        //  $entityManager->remove($utilisateur[0]);
+    }
+       $entityManager->flush();
+       // indexadminaction() en dessous recopier 
+       $repository_event = $this->getDoctrine()->getRepository(Evenement::class);
+       $events = $repository_event->findAll();
+       return $this->render('@TheatreAdministrateur/Default/indexAdmin.html.twig',array('events'=>$events));
+    }
 }
