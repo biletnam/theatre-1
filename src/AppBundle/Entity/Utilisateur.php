@@ -23,9 +23,9 @@ class Utilisateur
     private $id;
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="user_id", type="integer")
+     * @ORM\Column(name="user_id", type="string")
      */
     private $userId;
 
@@ -182,27 +182,27 @@ class Utilisateur
     }
 
     /**
-     * Set userName
+     * Set username
      *
-     * @param string $userName
+     * @param string $username
      *
      * @return Utilisateur
      */
     public function setUserName($userName)
     {
-        $this->userName = $userName;
+        $this->username = $userName;
 
         return $this;
     }
 
     /**
-     * Get userName
+     * Get username
      *
      * @return string
      */
     public function getUserName()
     {
-        return $this->userName;
+        return $this->username;
     }
     /**
      * Constructor
